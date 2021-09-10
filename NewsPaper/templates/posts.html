@@ -50,4 +50,10 @@ News
             <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
         {% endif %}
     {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Добавить пост">
+    </form>
 {% endblock content %}
