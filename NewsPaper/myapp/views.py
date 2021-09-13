@@ -73,4 +73,4 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     template_name = 'post_delete.html'
     queryset = Post.objects.all()
-    success_url = '/posts/'
+    success_url = '/news/'
