@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.db.models import  Sum
+from allauth.account.forms import SignupForm
 
 class Author(models.Model):
     authorUser = models.OneToOneField(User, on_delete= models.CASCADE)
@@ -90,3 +91,11 @@ class Comment(models.Model):
     def dislike(self):
         self.rating -= 1
         self.save()
+
+
+class BasicSignupForm(SignupForm):
+    def save(self, request):
+        user = super(BasicSignupForm, self).save(request)
+        basic_group = Group.objects.get(name='common')
+        basic_group.user_set.add(user)
+        return user

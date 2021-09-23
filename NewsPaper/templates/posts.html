@@ -8,7 +8,9 @@ News
 {% block content %}
     <h1>Все статьи и новости</h1>
     <h3> Всего постов: {{ posts|length }}</h3>
-
+    {% if is_not_authors %}
+    <button><a href="{% url 'upgrade' %}">Хочу стать автором</a></button>
+    {% endif %}
 
     {% if posts %}
     <table>

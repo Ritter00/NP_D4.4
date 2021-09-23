@@ -11,5 +11,12 @@ News
     {{ form }}
     <input type="submit" value="Добавить пост">
 </form>
+<br>
+<hr>
+{% if is_not_authors %}
+<button>
+    <a href="{% url 'upgrade' %}">Хочу стать автором</a>
+</button>
+{% endif %}
 
 {% endblock content %}
